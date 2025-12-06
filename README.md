@@ -68,3 +68,97 @@
 ```bash
 git clone [https://github.com/your-username/vuln-manager.git](https://github.com/your-username/vuln-manager.git)
 cd vuln-manager
+```
+
+### 3. 가상환경 및 라이브러리 설치
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 4. 데이터베이스 설정 (Database Setup)
+MariaDB에 접속하여 아래 명령어로 DB와 테이블을 생성합니다.
+
+```SQL
+
+CREATE DATABASE vuln_manager CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE vuln_manager;
+
+-- (테이블 생성 쿼리는 프로젝트 내 'schema.sql' 참조 또는 아래 테이블 생성)
+-- users, servers, scan_results, fim_targets 테이블 필요
+```
+
+### 5. 환경 변수 설정 (.env)
+프로젝트 루트 경로에 .env 파일을 생성하고 설정을 입력합니다.
+```bash
+Ini, TOML
+
+DB_HOST=127.0.0.1
+DB_USER=root
+DB_PASSWORD=your_secure_password
+SECRET_KEY=your_jwt_secret_key
+OLLAMA_URL=http://localhost:11434/api/generate
+```
+
+### 6. 실행 (Run Application)
+
+#### 수동 실행
+```bash
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
+#### Systemd 서비스 등록 및 실행 (운영 환경)
+```bash
+sudo cp vuln_manager.service /etc/systemd/system/
+sudo systemctl enable --now vuln_manager
+```
+---
+
+## 📂 프로젝트 구조 (Directory Structure)
+
+```text
+vuln-manager/
+├── main.py              # 메인 애플리케이션 진입점 (API 라우팅)
+├── db.py                # 데이터베이스 연결 및 쿼리 관리 모듈
+├── scripts_db.py        # 취약점 진단/조치 로직 데이터베이스 (U-01~U-70)
+├── ai_manager.py        # Ollama AI 연동 및 프롬프트 처리 모듈
+├── templates/           # 프론트엔드 템플릿 (Jinja2)
+│   ├── login.html       # 로그인 페이지
+│   ├── server_list.html # 대시보드 페이지
+│   └── server_detail.html # 상세 진단 및 FIM 페이지
+├── requirements.txt     # 파이썬 패키지 의존성 목록
+└── README.md            # 프로젝트 설명서
+```
+---
+### ⚠️ 보안 주의사항 (Security Notice)
+본 시스템은 관리자(Root) 권한으로 서버 설정을 변경하는 강력한 도구입니다.
+
+반드시 인가된 내부 네트워크 또는 VPN 환경 내에서만 접근하도록 네트워크를 격리하십시오.
+
+기본 관리자 계정의 비밀번호와 SECRET_KEY는 운영 환경 배포 전 반드시 변경하십시오.
+
+운영 서버에 적용하기 전, 테스트 환경에서 충분한 검증을 거치시길 권장합니다.
+
+---
+
+### MIT License
+
+Copyright (c) 2025 SecuThive
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
