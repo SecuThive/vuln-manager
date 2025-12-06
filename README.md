@@ -1,12 +1,12 @@
 # 🛡️ Vuln-Manager (Agentless Security Hardening System)
 
-![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.95.0-009688.svg)
-![MariaDB](https://img.shields.io/badge/MariaDB-10.3+-003545.svg)
-![Ollama](https://img.shields.io/badge/Ollama-AI-black.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.95%2B-009688?logo=fastapi&logoColor=white)
+![Ollama](https://img.shields.io/badge/AI-Ollama%20(Llama3)-orange?logo=openai&logoColor=white)
+![Platform](https://img.shields.io/badge/Platform-Linux-green?logo=linux&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-> **에이전트 설치 없이(Agentless)** SSH 프로토콜만을 사용하여 리눅스 서버의 취약점을 진단하고, 자동 조치 및 파일 무결성 감시(FIM)를 수행하는 **AI 기반 중앙 보안 관리 시스템**입니다.
+> **"KISA 주요정보통신기반시설 가이드 기반, Agentless 방식의 온프레미스 AI 보안 솔루션"**
 
 ---
 
