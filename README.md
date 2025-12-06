@@ -66,7 +66,7 @@
 
 ### 2. 저장소 클론 (Clone)
 ```bash
-git clone [https://github.com/your-username/vuln-manager.git](https://github.com/your-username/vuln-manager.git)
+git clone [https://github.com/your-username/vuln-manager.git](https://github.com/SecuThive/vuln-manager.git)
 cd vuln-manager
 ```
 
