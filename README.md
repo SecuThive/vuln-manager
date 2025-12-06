@@ -117,6 +117,9 @@ sudo systemctl enable --now vuln_manager
 ### 실행 화면
 #### 전체 검사 진행 및 AI 분석
 ![Image](https://github.com/user-attachments/assets/f466142d-8a88-4f2a-b17e-e451595f2754)
+
+#### 웹쉘 분석 도구
+![Image](https://github.com/user-attachments/assets/580b238f-c98b-4029-8f82-4bb4fa68c97c)
 ---
 
 ## 📂 프로젝트 구조 (Directory Structure)
